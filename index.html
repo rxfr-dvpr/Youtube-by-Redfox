@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube by REDFOX</title>
+    <link rel="shortcut icon" href="./assets/img/youtube-svgrepo-com.svg" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+<body id="body">
+
+    <div id="app">
+
+        <div class="loader active">
+            <p class="loading-icon"><i class="fas fa-spinner"></i></p>
+        </div>
+
+        <nav :class="{nav: true}">
+            <div :class="containerFluid">
+                <div :class="row">
+                    
+                    <div class="nav-logo">
+                        <button @click="showHideNav" class="nav__links-btn">
+                            <span class="nav__btn-line"></span>
+                            <span class="nav__btn-line"></span>
+                            <span class="nav__btn-line"></span>
+                        </button>
+                        
+                        <a href="./index.html" class="logo"><img src="./assets/img/youtube-dark-logo.svg" alt="" class="logo-img"></a>
+                    </div>
+
+                    <div class="nav__search-content">
+
+                        <form action="" class="search__form" method="get">
+                            <input type="text" class="search__inp" placeholder="Введите запрос">
+                            <button class="search__btn"><i class="fal fa-search" title="Введите запрос"></i></button>
+                        </form>
+
+                        <button class="microphone__btn"><i class="fal fa-microphone" title="Голосовой поиск"></i></button>
+                    </div>
+
+                    <div class="nav__profile-content">
+
+                        <div class="nav__abilities">
+                            <button class="nav__ability-btn">
+                                <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 8H9V11H7V8H4V6H7V3H9V6H12V8ZM15 1H1V13H15V6.61L19 8.44V3.56L15 5.39V1ZM16 0V3.83L20 2V10L16 8.17V14H0V0H16Z" fill="white"/>
+                                </svg>
+                            </button>
+
+                            <button class="nav__ability-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0V4H16V0H12ZM15 3H13V1H15V3ZM12 6V10H16V6H12ZM15 9H13V7H15V9ZM6 0V4H10V0H6ZM9 3H7V1H9V3ZM6 6V10H10V6H6ZM9 9H7V7H9V9ZM12 12V16H16V12H12ZM15 15H13V13H15V15ZM6 12V16H10V12H6ZM9 15H7V13H9V15ZM0 0V4H4V0H0ZM3 3H1V1H3V3ZM0 6V10H4V6H0ZM3 9H1V7H3V9ZM0 12V16H4V12H0ZM3 15H1V13H3V15Z" fill="white"/>
+                                </svg>
+                            </button>
+
+                            <button class="nav__ability-btn">
+                                <svg width="16" height="21" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 19H10C10 20.1 9.1 21 8 21C6.9 21 6 20.1 6 19ZM16 16.35V18H0V16.35L2 14.47V9.31998C2 6.39998 3.56 4.09998 6 3.33998V2.95998C6 1.53998 7.49 0.459976 8.99 1.19998C9.64 1.51998 10 2.22998 10 2.95998V3.34998C12.44 4.09998 14 6.40998 14 9.32998V14.48L16 16.35ZM15 16.77L13 14.89V9.41998C13 6.94998 11.81 5.05998 9.87 4.31998C8.61 3.78998 7.23 3.81998 6.03 4.34998C4.15 5.10998 3 6.98998 3 9.41998V14.89L1 16.77V17H15V16.77Z" fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <button class="user__profile-btn"><img src="./assets/img/user.jpg" alt="" class="user-avatar"></button>
+
+                    </div>
+
+                    <div class="nav__abilities-mb">
+
+                        <button class="search-btn-mb">
+                            <i class="fal fa-search"></i>
+                        </button>
+
+                        <button class="user__profile-btn"><img src="./assets/img/user.jpg" alt="" class="user-avatar"></button>
+
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+        <main :class="{main: true}">
+            <div :class="containerMax">
+                <div :class="row">
+                    
+                    <div :class="[{navbarLeft: true}, {hide: showHide}]" id="navbarLeft">
+
+                        <div class="user__sections">
+            
+                            <a href="#!" class="user__section-item active" title="Главная">
+                                <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 7V18H6V12H10V18H16V7L8 0L0 7Z" fill="white"/>
+                                </svg>
+            
+                                <p class="user-item-text">Главная</p>
+                            </a>
+            
+                            <a href="#!" class="user__section-item" title="Навигатор">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.8 7.8L3.97 16.03L12.2 12.2L16.03 3.97L7.8 7.8ZM11.08 10.77C10.87 11.06 10.57 11.25 10.22 11.31C10.15 11.32 10.07 11.33 10 11.33C9.72 11.33 9.46 11.25 9.23 11.08C8.94 10.87 8.75 10.57 8.69 10.22C8.63 9.87 8.71 9.51 8.92 9.23C9.13 8.94 9.43 8.75 9.78 8.69C10.13 8.63 10.48 8.71 10.77 8.92C11.06 9.13 11.25 9.43 11.31 9.78C11.37 10.13 11.29 10.48 11.08 10.77ZM10 1C14.96 1 19 5.04 19 10C19 14.96 14.96 19 10 19C5.04 19 1 14.96 1 10C1 5.04 5.04 1 10 1ZM10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0Z" fill="white"/>
+                                </svg>
+            
+                                <p class="user-item-text">Навигатор</p>
+                            </a>
+            
+                            <a href="#!" class="user__section-item" title="Shorts">
+                                <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.99995 12.65V7.34999L12 9.99999L6.99995 12.65ZM14.77 8.31999C14 7.99999 13.57 7.81999 13.57 7.81999L15 7.05999C16.84 6.09999 17.53 3.82999 16.56 1.99999C15.59 0.169991 13.32 -0.530009 11.49 0.439991L2.99995 4.93999C1.70995 5.61999 0.929953 6.97999 0.999953 8.42999C1.06995 9.84999 1.92995 11.1 3.21995 11.68C3.24995 11.69 4.41995 12.18 4.41995 12.18L2.99995 12.93C1.16995 13.9 0.469953 16.17 1.43995 18C2.40995 19.83 4.67995 20.53 6.50995 19.56L15.01 15.06C16.3 14.38 17.07 13.02 17 11.57C16.93 10.15 16.06 8.88999 14.77 8.31999ZM14.54 14.18L6.03995 18.68C4.69995 19.39 3.02995 18.88 2.31995 17.54C1.60995 16.2 2.11995 14.53 3.45995 13.82L5.49995 12.74V11.53L4.80995 11.25L3.69995 10.79C2.70995 10.38 2.04995 9.43999 1.99995 8.37999C1.94995 7.31999 2.51995 6.31999 3.45995 5.81999L11.96 1.31999C13.3 0.609991 14.97 1.11999 15.68 2.45999C16.39 3.79999 15.88 5.46999 14.54 6.17999L12.5 7.25999V8.46999L14.3 9.20999C15.29 9.61999 15.95 10.56 16 11.62C16.05 12.68 15.48 13.68 14.54 14.18Z" fill="white"/>
+                                </svg>
+                                    
+            
+                                <p class="user-item-text">Shorts</p>
+                            </a>
+            
+                            <a href="#!" class="user__section-item" title="Подписки">
+                                <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 15V9L13 12L8 15ZM15 0H5V1H15V0ZM18 3H2V4H18V3ZM20 6H0V18H20V6ZM1 7H19V17H1V7Z" fill="white"/>
+                                </svg>                                    
+            
+                                <p class="user-item-text">Подписки</p>
+                            </a>
+            
+                        </div>
+            
+                        <div class="user__sections">
+            
+                            <a href="#!" class="user__section-item" title="Библиотека">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 4L14 7.5L8 11V4ZM15 17H1V3H0V18H15V17ZM18 15H3V0H18V15ZM4 14H17V1H4V14Z" fill="white"/>
+                                </svg>
+            
+                                <p class="user-item-text">Библиотека</p>
+                            </a>
+            
+                            <a href="#!" class="user__section-item" title="История">
+                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.97 14.95L8.99996 11.87V5H11V10.76L15.03 13.25L13.97 14.95ZM21 10C21 15.51 16.51 20 11 20C5.48996 20 0.999961 15.51 0.999961 10H1.99996C1.99996 14.96 6.03996 19 11 19C15.96 19 20 14.96 20 10C20 5.04 15.96 1 11 1C7.80996 1 4.91996 2.64 3.27996 5.38C3.16996 5.56 3.05996 5.75 2.96996 5.94C2.95996 5.96 2.94996 5.98 2.93996 6H6.99996V7H0.959961V1H1.95996V5.74C1.99996 5.65 2.02996 5.57 2.06996 5.49C2.17996 5.27 2.29996 5.07 2.41996 4.86C4.21996 1.86 7.50996 0 11 0C16.51 0 21 4.49 21 10Z" fill="white"/>
+                                </svg>
+            
+                                <p class="user-item-text">История</p>
+                            </a>
+            
+                            <a href="#!" class="user__section-item" title="Ваши видео">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 5L13 9L7 13V5ZM18 0V18H0V0H18ZM17 1H1V17H17V1Z" fill="white"/>
+                                </svg>
+            
+                                <p class="user-item-text">Ваши видео</p>
+                            </a>
+            
+                            <a href="#!" class="user__section-item" title="Смотреть позже">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.97 14.95L8 11.87V5H10V10.76L14.03 13.25L12.97 14.95ZM10 1C5.04 1 1 5.04 1 10C1 14.96 5.04 19 10 19C14.96 19 19 14.96 19 10C19 5.04 14.96 1 10 1ZM10 0C15.52 0 20 4.48 20 10C20 15.52 15.52 20 10 20C4.48 20 0 15.52 0 10C0 4.48 4.48 0 10 0Z" fill="white"/>
+                                </svg>                                   
+            
+                                <p class="user-item-text">Смотреть позже</p>
+                            </a>
+            
+                            <a href="#!" class="user__section-item" title="Понравившиеся">
+                                <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.77 7H11.54L13.06 2.06C13.38 1.03 12.54 0 11.38 0C10.8 0 10.24 0.24 9.86 0.65L4 7H0V17H4H5H14.43C15.49 17 16.41 16.33 16.62 15.39L17.96 9.39C18.23 8.15 17.18 7 15.77 7ZM4 16H1V8H4V16ZM16.98 9.17L15.64 15.17C15.54 15.65 15.03 16 14.43 16H5V7.39L10.6 1.33C10.79 1.12 11.08 1 11.38 1C11.64 1 11.88 1.11 12.01 1.3C12.08 1.4 12.16 1.56 12.1 1.77L10.58 6.71L10.18 8H11.53H15.76C16.17 8 16.56 8.17 16.79 8.46C16.92 8.61 17.05 8.86 16.98 9.17Z" fill="white"/>
+                                </svg>
+                                                                       
+                                <p class="user-item-text">Понравившиеся</p>
+                            </a>
+            
+                        </div>
+            
+                        <div class="user__sections" id="subscribed-members">
+            
+                            <p class="user__section-title">подписки</p>
+                            
+                            <a href="#!" class="subscribed-member new-video" title="ЛИТВИН">
+                                <img src="https://yt3.ggpht.com/EvFd7OX5v64BG2p7gklyCKdLeeUzXvxdzBt8qcLKZfeWkfdsoo9LyAm_aeZKCYb7DR7gIDDz3w=s900-c-k-c0x00ffffff-no-rj" loading="lazy" alt="" class="subcribed-member-avatar">
+            
+                                <p class="user-item-text">ЛИТВИН</p>
+            
+                                <span class="blue-dot"></span>
+                            </a>
+            
+                            <a href="#!" class="subscribed-member new-video" title="Coke Studio Bangla">
+                                <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" loading="lazy" alt="" class="subcribed-member-avatar">
+            
+                                <p class="user-item-text">Coke Studio Bangla</p>
+            
+                                <span class="blue-dot"></span>
+                            </a>
+            
+                            <a href="#!" class="subscribed-member" title="Nadir On The Go">
+                                <img src="./assets/img/navbar-left-icons/subscribtions/nadir.svg" loading="lazy" alt="" class="subcribed-member-avatar">
+            
+                                <p class="user-item-text">Nadir On The Go</p>
+            
+                                <span class="blue-dot"></span>
+                            </a>
+            
+                            <a href="#!" class="subscribed-member new-video" title="MKBHD">
+                                <img src="./assets/img/navbar-left-icons/subscribtions/mkbhd.svg" loading="lazy" alt="" class="subcribed-member-avatar">
+            
+                                <p class="user-item-text">MKBHD</p>
+            
+                                <span class="blue-dot"></span>
+                            </a>
+            
+                            <a href="#!" class="subscribed-member" title="Figma">
+                                <img src="./assets/img/navbar-left-icons/subscribtions/figma.svg" loading="lazy" alt="" class="subcribed-member-avatar">
+            
+                                <p class="user-item-text">Figma</p>
+            
+                                <span class="blue-dot"></span>
+                            </a>
+            
+                            <a href="#!" class="subscribed-member new-video" title="ATC Android ToTo Country">
+                                <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" loading="lazy" alt="" class="subcribed-member-avatar">
+            
+                                <p class="user-item-text">ATC Android ToTo Country</p>
+            
+                                <span class="blue-dot"></span>
+                            </a>
+            
+                            <a href="#!" class="subscribed-member" title="Alux.com">
+                                <img src="./assets/img/navbar-left-icons/subscribtions/aluxcom.svg" loading="lazy" alt="" class="subcribed-member-avatar">
+            
+                                <p class="user-item-text">Alux.com</p>
+            
+                                <span class="blue-dot"></span>
+                            </a>
+            
+                            <a href="#!" class="subscribed-member new-video" title="Satish K Videos">
+                                <img src="./assets/img/navbar-left-icons/subscribtions/satish.svg" loading="lazy" alt="" class="subcribed-member-avatar">
+            
+                                <p class="user-item-text">Satish K Videos</p>
+            
+                                <span class="blue-dot"></span>
+                            </a>
+            
+                        </div>
+
+                    </div> 
+
+                    <section :class="{main__content: true}">
+
+                        <section class="tags__section">
+                            <div :class="containerMax">
+                                <div :class="row">
+                
+                                    <button class="tags-btn active" title="Все">Все</button>
+                                    <button class="tags-btn" title="">Видеоигры</button>
+                                    <button class="tags-btn" title="">Сейчас в эфире</button>
+                                    <button class="tags-btn" title="">Музыка</button>
+                                    <button class="tags-btn" title="">Скетч-шоу</button>
+                                    <button class="tags-btn" title="">Бейсбол</button>
+                                    <button class="tags-btn" title="">Экшен и приключения</button>
+                                    <button class="tags-btn" title="">Анимация</button>
+                                    <button class="tags-btn" title="">Кулинария</button>
+                                    <button class="tags-btn" title="">Новое для вас</button>
+                
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <div class="videos__section">
+                            <div :class="containerFluid">
+                                <div :class="row">
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/coke-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/coke.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita</p>
+                                                <p class="channel-name">Coke Studio Bangla</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">1.5m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#!" class="video__content">
+                                        <div class="video__preview">
+                                            <img src="./assets/img/videos-preview/act-android-preview.svg" alt="" class="video-preview-img">
+                                        </div>
+
+                                        <div class="video__content-footer">
+                                            <img src="./assets/img/navbar-left-icons/subscribtions/atk-android.svg" alt="" class="channel-avatar">
+
+                                            <div class="video__desc">
+                                                <p class="video-name">Infinix Note 12 : ১৮ হাজার টাকায় AMOLED ডিসপ্লে ও Helio G88 SoC!</p>
+                                                <p class="channel-name">ATC Andriod ToTo Company</p>
+
+                                                <p class="video-info">
+                                                    <span class="video-watched-num">4.2m</span> views 
+                                                    <span class="grey-dot"></span> 
+                                                    <span class="video-posted-day">2 days ago</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <div :class="{navbarBottom: true}">
+                        <div :class="containerFluid">
+                            <div :class="row">
+
+                                <a href="#!" class="user__bottom-item active">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4,21V10.08l8-6.96l8,6.96V21h-6v-6h-4v6H4z" fill="white"></path>
+                                    </svg>
+
+                                    <p class="user-btm-icon-name">Главная</p>
+                                </a>
+
+                                <a href="#!" class="user__bottom-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33c-.77-.32-1.2-.5-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zm-.23 5.86l-8.5 4.5c-1.34.71-3.01.2-3.72-1.14-.71-1.34-.2-3.01 1.14-3.72l2.04-1.08v-1.21l-.69-.28-1.11-.46c-.99-.41-1.65-1.35-1.7-2.41-.05-1.06.52-2.06 1.46-2.56l8.5-4.5c1.34-.71 3.01-.2 3.72 1.14.71 1.34.2 3.01-1.14 3.72L15.5 9.26v1.21l1.8.74c.99.41 1.65 1.35 1.7 2.41.05 1.06-.52 2.06-1.46 2.56z" fill="white"></path></svg>
+                                        
+
+                                    <p class="user-btm-icon-name">Shorts</p>
+                                </a>
+
+                                <a href="#!" class="user__bottom-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><path d="M10,18v-6l5,3L10,18z M17,3H7v1h10V3z M20,6H4v1h16V6z M22,9H2v12h20V9z M3,10h18v10H3V10z" fill="white"></path></svg>
+
+                                    <p class="user-btm-icon-name">Подписки</p>
+                                </a>
+
+                                <a href="#!" class="user__bottom-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><path d="M11,7l6,3.5L11,14V7L11,7z M18,20H4V6H3v15h15V20z M21,18H6V3h15V18z M7,17h13V4H7V17z" fill="white"></path></svg>
+
+                                    <p class="user-btm-icon-name">Библиотека</p>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./assets/vue.js"></script>
+</body>
+</html>
